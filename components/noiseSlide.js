@@ -236,15 +236,6 @@ class App3 {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);
 
-    const gui = new GUI({ width: 300 });
-    gui.open();
-    gui.add(this.material.uniforms.uNoiseScale.value, "x", 0, 100, 1);
-    gui.add(this.material.uniforms.uNoiseScale.value, "y", 0, 100, 1);
-    gui
-      .add(this.material.uniforms.uProgress, "value", 0, 1, 0.1)
-      .name("progress")
-      .listen();
-
     const tl = gsap.timeline({
       repeat: -1,
       yoyo: true,
