@@ -7,6 +7,30 @@
   overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+  .left-container{
+    width: 70%;
+  }
+}
+
+.about-containar{
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  border: 2px solid #322940;
+  overflow-y: auto;
+  background-color: #CDE4E8;
+}
+
+@media (max-width: 768px) {
+  .about-containar{
+    position: fixed;
+    top: 0;
+    background-color: #CDE4E8;
+  }
+}
+
 .title {
   font-size: 3vw;
   display: flex;
@@ -17,6 +41,13 @@
   letter-spacing: -0.03em;
   color: #322940;
   padding: 50px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 19px;
+    padding: 30px;
+  }
 }
 
 .list {
@@ -38,15 +69,38 @@
   color: #322940;
 }
 
+@media (max-width: 768px) {
+  .list-menu {
+    font-size: 14px;
+  }
+}
+
 .list-title{
     background-color: #f6dbd4;
 }
 
-.about-containar{
-  background-color: #CDE4E8;
+@media (max-width: 768px) {
+  .about-containar{
+    width: 70%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    border: 2px solid #322940;
+    overflow-y: auto;
+    background-color: #CDE4E8;
+  }
+}
+.about-inner{
   padding: 5vh 5vh 5vh 5vh;
-  height: calc(100vh - 150px);
   border-top: 2px solid #322940;
+}
+
+
+@media (max-width: 768px) {
+  .about-inner{
+    padding: 30px;
+    border-top: 2px solid #322940;
+  }
 }
 
 .about-containar p{
@@ -54,4 +108,59 @@
   letter-spacing: 0.06em;
   line-height: 2;
   font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .about-containar p{
+    font-size: 14px;
+  }
+}
+
+.backToTop{
+  display: inline-block;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  color: #322940;
+  margin-top: 30px;
+  position: relative;
+}
+
+.backToTop::after{
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #322940;
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.bottom::after{
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.backToTop:hover::after,.bottom:hover::after{
+  transform: scaleX(1);
+}
+.bottom{
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  position: absolute;
+  left: 5%;
+  bottom: 3%;
+  color: #fff;
 }
