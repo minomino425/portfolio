@@ -8,7 +8,7 @@ export default function NoiseBg() {
       webgl.setup();
       webgl.render();
     });
-  });
+  },[]);
 
   class WebGLFrame {
     constructor() {

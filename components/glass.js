@@ -10,8 +10,7 @@ export default function Glass() {
       webgl.debugSetting();
       webgl.render();
     });
-  });
-
+  },[]);
   class WebGLFrame {
     constructor() {
       this.canvas = null;

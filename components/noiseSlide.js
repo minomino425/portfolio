@@ -11,7 +11,7 @@ export default function NoiseSlide() {
       app.init();
       app.render();
     });
-  });
+  },[]);
 
   /**
  * three.js を効率よく扱うために自家製の制御クラスを定義

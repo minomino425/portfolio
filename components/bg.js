@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Bg() {
+
   useEffect(() => {
     const webgl = new WebGLFrame();
     webgl.init("webgl-canvas");
@@ -8,7 +9,7 @@ export default function Bg() {
       webgl.setup();
       webgl.render();
     });
-  });
+  },[])
 
   class WebGLFrame {
     constructor() {
