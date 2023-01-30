@@ -19,7 +19,7 @@ void main() {
   vec2 ipos = floor(st);
   
   //abs()は絶対値を返すので正になる
-  vec3 color = vec3(abs(sin(u_time * 2.4 * random(ipos))), 0.98, 0.98);
+  vec3 color = vec3(abs(sin(u_time * 2.4 * random(ipos))) * 2., 0.8, 0.98);
 
-  gl_FragColor = vec4(color + vec3(mouse * 0.5, 0.0), 1.0);
+  gl_FragColor = vec4(color + vec3(mouse.x,0.0,1.0), 1.0);
 }

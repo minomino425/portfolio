@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function Glass() {
+
   const [count, init] = useState(0);
+
   useEffect(() => {
     const webgl = new WebGLFrame();
-    webgl.load("webgl-canvas").then(() => {
+    webgl.init("webgl-canvas");
+    webgl.load().then(() => {
       webgl.setup();
       webgl.debugSetting();
       webgl.render();
@@ -31,23 +34,39 @@ export default function Glass() {
       // テクスチャのブレンド係数 @@@
       this.blendingRatio = { value: 0.0 };
     }
-    
+    /**
+     * WebGL を実行するための初期化処理を行う。
+     * @param {HTMLCanvasElement|string} canvas - canvas への参照か canvas の id 属性名のいずれか
+     */
+    init(canvas) {
+
+      if (canvas instanceof HTMLCanvasElement === true) {
+        this.canvas = canvas;
+      } else if (Object.prototype.toString.call(canvas) === "[object String]") {
+        const c = document.querySelector(`#${canvas}`);
+        if (c instanceof HTMLCanvasElement === true) {
+          this.canvas = c;
+        }
+      }
+      if (this.canvas == null) {
+        throw new Error("invalid argument");
+      }
+      this.gl = this.canvas.getContext("webgl");
+      if (this.gl == null) {
+        throw new Error("webgl not supported");
+      }
+    }
     /**
      * シェーダやテクスチャ用の画像など非同期で読み込みする処理を行う。
      * @return {Promise}
      */
-    load(canvas) {
+    load() {
       // ロード完了後に必要となるプロパティを初期化
       this.program = null;
       this.attLocation = null;
       this.attStride = null;
       this.uniLocation = null;
       this.uniType = null;
-
-      const c = document.querySelector(`#${canvas}`);
-      this.canvas = c;
-
-      this.gl = this.canvas.getContext("webgl");
 
       return new Promise((resolve) => {
         this.loadShader(["./vs3_1.vert", "./fs3_1.frag"])
@@ -196,7 +215,6 @@ export default function Glass() {
       }).to(this.blendingRatio, {
         value: 1.0,
       });
-      
     }
     /**
      * WebGL を利用して描画を行う。
@@ -272,9 +290,6 @@ export default function Glass() {
         this.uniType
       );
       gl.drawArrays(gl.LINES, 0, this.axisPosition.length / 3);
-
-      
-
     }
 
     // utility method =========================================================

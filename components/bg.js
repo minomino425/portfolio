@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function Bg() {
 
-  console.log('StartScreen')
-
   const [count, init] = useState(0);
 
   useEffect(() => {
@@ -30,8 +28,6 @@ export default function Bg() {
      * @param {HTMLCanvasElement|string} canvas - canvas への参照か canvas の id 属性名のいずれか
      */
     init(canvas) {
-
-      console.log('useEffect')
 
       if (canvas instanceof HTMLCanvasElement === true) {
         this.canvas = canvas;
@@ -193,7 +189,7 @@ export default function Bg() {
       gl.uniform1f(this.uniLocation[3], this.nowTime); // 時間の経過
 
       // 転送済みの情報を使って、頂点を画面にレンダリングする
-      gl.drawArrays(gl.POINTS, 0, this.position.length / 3);
+      gl.drawArrays(gl.POINT, 0, this.position.length / 3);
     }
 
     // utility method =========================================================
