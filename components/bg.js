@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function Bg() {
 
+  console.log('StartScreen')
+
+  const [count, init] = useState(0);
+
   useEffect(() => {
     const webgl = new WebGLFrame();
     webgl.init("webgl-canvas");
@@ -9,9 +13,11 @@ export default function Bg() {
       webgl.setup();
       webgl.render();
     });
-  },[])
+  },)
 
   class WebGLFrame {
+
+    
     constructor() {
       this.canvas = null; // canvas エレメント
       this.gl = null; // WebGL コンテキスト
@@ -26,6 +32,9 @@ export default function Bg() {
      * @param {HTMLCanvasElement|string} canvas - canvas への参照か canvas の id 属性名のいずれか
      */
     init(canvas) {
+
+      console.log('useEffect')
+
       if (canvas instanceof HTMLCanvasElement === true) {
         this.canvas = canvas;
       } else if (Object.prototype.toString.call(canvas) === "[object String]") {

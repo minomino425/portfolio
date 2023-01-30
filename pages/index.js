@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useRef } from "react";
 import Bg from "../components/bg";
 import Left from "../components/left";
 import Meta from '../components/meta'
