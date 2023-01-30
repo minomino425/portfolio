@@ -32,7 +32,7 @@ export default function Meta({
   return (
     <Head>
       <title>{title}</title>
-      <meta property="og:title" content={`${pageTitle} | ${siteTitle}`} />
+      <meta property="og:title" content={`${siteTitle}`} />
 
       <meta name="description" content={desc} />
       <meta property="og:description" content={desc} />

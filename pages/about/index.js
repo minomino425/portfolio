@@ -14,7 +14,6 @@ const about = () => {
     >
         <Bg />
         <About />
-        <BackToTop isWork/>
       </motion.div>
     </>
   );
