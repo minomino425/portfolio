@@ -13,11 +13,9 @@ export default function Bg() {
       webgl.setup();
       webgl.render();
     });
-  },)
+  },[]);
 
   class WebGLFrame {
-
-    
     constructor() {
       this.canvas = null; // canvas エレメント
       this.gl = null; // WebGL コンテキスト
