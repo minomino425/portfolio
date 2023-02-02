@@ -2,6 +2,7 @@ import styles from "../../styles/Left.module.css";
 import Glass from "../../components/glass";
 import { motion } from 'framer-motion'
 import BackToTop from "../../components/backToTop";
+import Cursor from "../../components/cursor";
 
 const GlassSlide = () => {
   return (
@@ -14,6 +15,7 @@ const GlassSlide = () => {
     >
       <Glass />
       <BackToTop isWork/>
+      <Cursor />
       </motion.div>
     </>
   );

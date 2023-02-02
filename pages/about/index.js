@@ -1,6 +1,7 @@
 import About from "../../components/about";
 import Bg from "../../components/bg";
 import BackToTop from "../../components/backToTop";
+import Cursor from "../../components/cursor";
 import { motion } from 'framer-motion'
 
 const about = () => {
@@ -14,6 +15,7 @@ const about = () => {
     >
         <Bg />
         <About />
+        <Cursor />
       </motion.div>
     </>
   );

@@ -1,6 +1,7 @@
 // import css from "../styles/Home.module.css";
 import Morph from "../../components/morph";
 import BackToTop from "../../components/backToTop";
+import Cursor from "../../components/cursor";
 import { motion } from 'framer-motion'
 
 const Morphing = () => {
@@ -14,6 +15,7 @@ const Morphing = () => {
       >
       <Morph />
       <BackToTop isWork/>
+      <Cursor />
       </motion.div>
     </>
   );

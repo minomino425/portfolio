@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Noise from "../../components/noiseBg";
 import BackToTop from "../../components/backToTop";
+import Cursor from "../../components/cursor";
 import { motion } from 'framer-motion'
 
 const NoiseBg = () => {
@@ -15,6 +16,7 @@ const NoiseBg = () => {
       >
       <Noise />
       <BackToTop isWork/>
+      <Cursor />
       </motion.div>
     </>
   );

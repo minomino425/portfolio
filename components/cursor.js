@@ -34,14 +34,14 @@ export default function Cursor() {
       ySet(pos.y);
     });
 
-    let links = document.querySelectorAll("a");
+    const links = document.querySelectorAll("a");
     for (let i = 0; i < links.length; i++) {
       let selfLink = links[i];
       selfLink.addEventListener("mouseover", function () {
-        ball.classList.add("link");
+        ball.classList.add(`${styles["link"]}`);
       });
       selfLink.addEventListener("mouseout", function () {
-        ball.classList.remove("link");
+        ball.classList.remove(`${styles["link"]}`);
       });
     }
 

@@ -10,7 +10,7 @@ export default function Left() {
               <a href="./about" className={styles["list-menu"]}>About</a>
             </li>
             <li className={`${styles.list} ${styles['list-title']}`}>
-              <a className={styles["list-menu"]}>Works</a>
+              <span className={styles["list-menu"]}>Works</span>
             </li>
             <li className={styles.list}>
               <a href="./noiseBg" className={styles["list-menu"]}>Noise background</a>
