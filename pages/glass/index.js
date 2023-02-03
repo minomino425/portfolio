@@ -3,6 +3,7 @@ import Glass from "../../components/glass";
 import { motion } from 'framer-motion'
 import BackToTop from "../../components/backToTop";
 import Cursor from "../../components/cursor";
+import Comment from "../../components/comment";
 
 const GlassSlide = () => {
   return (
@@ -16,6 +17,7 @@ const GlassSlide = () => {
       <Glass />
       <BackToTop isWork/>
       <Cursor />
+      <Comment glass="true"/>
       </motion.div>
     </>
   );

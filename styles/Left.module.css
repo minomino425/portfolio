@@ -175,9 +175,24 @@
   border-radius: 50%;
   pointer-events: none;
   transition: 0.3s width, 0.3s height;
+  display: grid;
+  place-items: center;
 }
 
 .link{
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
+}
+
+.cursorText{
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Karla', sans-serif;
+  opacity: 0;
+  transition: opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.link .cursorText{
+  opacity: 1;
 }

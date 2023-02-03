@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 
 export default function Cursor() {
-
   const [hoverFlag, setHoverFlag] = useState(true);
 
-  
   useEffect(() => {
     //カーソルのスタイル
     gsap.set("#cursor", { xPercent: -50, yPercent: -50 });
@@ -44,12 +42,13 @@ export default function Cursor() {
         ball.classList.remove(`${styles["link"]}`);
       });
     }
-
   }, []);
 
   return (
     <>
-      <div id="cursor" className={styles.cursor}></div>
+      <div id="cursor" className={styles.cursor}>
+        <span className={styles.cursorText}>CLICK</span>
+      </div>
     </>
   );
 }
