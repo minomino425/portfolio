@@ -2,6 +2,7 @@
 import Morph from "../../components/morph";
 import BackToTop from "../../components/backToTop";
 import Cursor from "../../components/cursor";
+import Comment from "../../components/comment";
 import { motion } from 'framer-motion'
 
 const Morphing = () => {
@@ -16,6 +17,7 @@ const Morphing = () => {
       <Morph />
       <BackToTop isWork/>
       <Cursor />
+      <Comment morph/>
       </motion.div>
     </>
   );

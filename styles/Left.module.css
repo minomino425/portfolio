@@ -8,26 +8,26 @@
 }
 
 @media (max-width: 768px) {
-  .left-container{
+  .left-container {
     width: 70%;
   }
 }
 
-.about-containar{
+.about-containar {
   position: fixed;
   width: 50%;
   height: 100%;
   top: 0;
   border: 2px solid #322940;
   overflow-y: auto;
-  background-color: #CDE4E8;
+  background-color: #cde4e8;
 }
 
 @media (max-width: 768px) {
-  .about-containar{
+  .about-containar {
     position: fixed;
     top: 0;
-    background-color: #CDE4E8;
+    background-color: #cde4e8;
   }
 }
 
@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   background-color: #f6dbd4;
-  font-family: 'Syne', sans-serif;
+  font-family: "Syne", sans-serif;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #322940;
@@ -51,21 +51,21 @@
 }
 
 .list {
-  background-color: #CDE4E8;
+  background-color: #cde4e8;
   border-top: 2px solid #322940;
   transition: background-color 0.3s;
   letter-spacing: 0.03em;
 }
 
 .list:hover:not(.list-title) {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .list-menu {
   display: block;
   padding: 5vh 5vh 5vh 5vh;
   font-size: 1.8vw;
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   color: #322940;
 }
 
@@ -75,57 +75,56 @@
   }
 }
 
-.list-title{
-    background-color: #f6dbd4;
+.list-title {
+  background-color: #f6dbd4;
 }
 
 @media (max-width: 768px) {
-  .about-containar{
+  .about-containar {
     width: 70%;
     height: 100vh;
     position: fixed;
     top: 0;
     border: 2px solid #322940;
     overflow-y: auto;
-    background-color: #CDE4E8;
+    background-color: #cde4e8;
   }
 }
-.about-inner{
+.about-inner {
   padding: 5vh 5vh 5vh 5vh;
   border-top: 2px solid #322940;
 }
 
-
 @media (max-width: 768px) {
-  .about-inner{
+  .about-inner {
     padding: 30px;
     border-top: 2px solid #322940;
   }
 }
 
-.about-containar p{
-  font-family: 'Noto Sans JP', sans-serif;
+.about-containar p {
+  font-family: "Noto Sans JP", sans-serif;
   letter-spacing: 0.06em;
   line-height: 2;
   font-size: 16px;
 }
 
 @media (max-width: 768px) {
-  .about-containar p{
+  .about-containar p {
     font-size: 14px;
   }
 }
 
-.backToTop{
+.backToTop {
   display: inline-block;
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   font-size: 14px;
   color: #322940;
   margin-top: 30px;
   position: relative;
 }
 
-.backToTop::after{
+.backToTop::after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -139,7 +138,7 @@
   transition: transform 0.3s;
 }
 
-.bottom::after{
+.bottom::after {
   content: "";
   position: absolute;
   display: inline-block;
@@ -153,19 +152,20 @@
   transition: transform 0.3s;
 }
 
-.backToTop:hover::after,.bottom:hover::after{
+.backToTop:hover::after,
+.bottom:hover::after {
   transform: scaleX(1);
 }
-.bottom{
-  font-family: 'Karla', sans-serif;
+.bottom {
+  font-family: "Karla", sans-serif;
   font-size: 14px;
   position: absolute;
   left: 5%;
-  bottom: 3%;
+  bottom: 6%;
   color: #fff;
 }
 
-.cursor{
+.cursor {
   width: 10px;
   height: 10px;
   position: fixed;
@@ -177,22 +177,79 @@
   transition: 0.3s width, 0.3s height;
   display: grid;
   place-items: center;
+  z-index: 1000;
 }
 
-.link{
+.link {
   width: 50px;
   height: 50px;
 }
 
-.cursorText{
+.cursorText {
   color: #fff;
   font-size: 12px;
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   opacity: 0;
   transition: opacity 0.2s;
   letter-spacing: 0.02em;
 }
 
-.link .cursorText{
+.link .cursorText {
   opacity: 1;
+}
+
+.comment {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  color: #322940;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0 2rem;
+  border: 0.1rem solid #322940;
+  line-height: 1.5rem;
+  transition: all 0.2s;
+}
+
+.comment-wrap {
+  display: inline-block;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  color: #322940;
+  background-color: #fff;
+  position: absolute;
+  width: 30%;
+  right: 5%;
+  bottom: 6%;
+  transition: opacity 0.2s;
+  color: #322940;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0 2rem;
+  border: 0.1rem solid #322940;
+  line-height: 1.5rem;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.comment-wrap.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.comment-wrap{
+  padding: 1rem;
+  text-align: left;
+}
+
+.comment.active {
+  opacity: 0;
+  transform: scale(3);
+  transform-origin: bottom right;
 }

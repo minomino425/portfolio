@@ -17,7 +17,7 @@ const GlassSlide = () => {
       <Glass />
       <BackToTop isWork/>
       <Cursor />
-      <Comment glass="true"/>
+      <Comment glass/>
       </motion.div>
     </>
   );
