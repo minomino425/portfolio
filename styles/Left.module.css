@@ -190,7 +190,7 @@
   font-size: 12px;
   font-family: "Karla", sans-serif;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.0.4s;
   letter-spacing: 0.02em;
 }
 
@@ -202,6 +202,8 @@
   font-family: "Karla", sans-serif;
   font-size: 14px;
   position: absolute;
+  width: 130px;
+  height: 27px;
   right: 5%;
   bottom: 6%;
   display: flex;
@@ -213,43 +215,71 @@
   padding: 0 2rem;
   border: 0.1rem solid #322940;
   line-height: 1.5rem;
-  transition: all 0.2s;
+  z-index: 10;
+}
+
+.comment.open {
+  transform-origin: bottom right;
+  animation: openAnimTitle 0.4s ease-in forwards;
+}
+
+.comment.close {
+  transform-origin: bottom right;
+  animation: closeAnimTitle 0.4s ease-in forwards;
+  opacity: 1;
 }
 
 .comment-wrap {
   display: inline-block;
+  width: 30%;
   font-family: "Karla", sans-serif;
   font-size: 14px;
   color: #322940;
   background-color: #fff;
   position: absolute;
-  width: 30%;
   right: 5%;
   bottom: 6%;
-  transition: opacity 0.2s;
   color: #322940;
   background-color: #fff;
   border-radius: 15px;
   padding: 0 2rem;
   border: 0.1rem solid #322940;
   line-height: 1.5rem;
-  transform: scale(0);
   transform-origin: bottom right;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.comment-wrap.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.comment-wrap{
+  opacity: 0;
   padding: 1rem;
   text-align: left;
+  z-index: 100;
 }
 
-.comment.active {
-  opacity: 0;
-  transform: scale(3);
-  transform-origin: bottom right;
+.comment-wrap.open {
+  opacity: 1;
+  transition: opacity 0.2s 0.4s ease-in;
 }
+
+@keyframes openAnimTitle {
+  0%{
+    width: var(--title-width);
+    height: var(--title-height);
+  }
+  99%{
+    width: var(--text-width);
+    height: var(--text-height);
+  }
+  100%{
+    width: var(--text-width);
+    height: var(--text-height);
+  }
+}
+
+@keyframes closeAnimTitle {
+  0%{
+    width: var(--text-width);
+    height: var(--text-height);
+  }
+  100%{
+    width: 130px;
+    height: 27px;
+  }
+}
+
