@@ -190,7 +190,7 @@
   font-size: 12px;
   font-family: "Karla", sans-serif;
   opacity: 0;
-  transition: opacity 0.0.4s;
+  transition: opacity 0.1s;
   letter-spacing: 0.02em;
 }
 
