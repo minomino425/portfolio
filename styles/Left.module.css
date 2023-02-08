@@ -221,6 +221,7 @@
 .comment.open {
   transform-origin: bottom right;
   animation: openAnimTitle 0.4s ease-in forwards;
+  visibility: visible;
 }
 
 .comment.close {
@@ -250,11 +251,13 @@
   padding: 1rem;
   text-align: left;
   z-index: 100;
+  visibility: hidden;
 }
 
 .comment-wrap.open {
   opacity: 1;
   transition: opacity 0.2s 0.4s ease-in;
+  visibility: visible;
 }
 
 @keyframes openAnimTitle {
