@@ -2,6 +2,7 @@ precision highp float;
 
 uniform sampler2D texture;
 uniform sampler2D dustTex;
+uniform sampler2D maskTex;
 uniform float time;
 
 varying vec2 vUv;
@@ -104,6 +105,7 @@ float snoise(vec3 v) {
 }
 //* ここまでオープンソースノイズ関数
 
+// -1〜1を返すsnoiseを0〜1を返すように変換
 float snoise01(vec3 v) {
   return 0.5 * (1.0 + snoise(v));
 }
@@ -121,39 +123,13 @@ float fbm(vec2 st) {
   return v;
 }
 
-vec4 noiseTutorial() {
-  vec2 uv = vUv;
-  float detail = 4.0;
-
-  //* 通常のノイズ
-  // float n = snoise01(vec3(uv.x * detail + 0.0 * time, uv.y * detail + 0.0 * time, 0.0 * time));
-  //* fbmで作ったノイズ
-  float n = fbm(vec2(uv.x * detail, uv.y * detail));
-  // n = pow(n * 1.2, 3.0);
-  // n = clamp(n, 0.0, 1.0);
-
-  return vec4(vec3(n), 1.0);
-}
-
-vec4 demo1A() {
-  vec2 uv = vUv;
-
-  //* ザラつき表現用の色を取得
-  vec4 rnd = texture2D(dustTex, uv);
-
-  //* detailに乱数を加えることによってテクスチャにザラつきを与える
-  float detail = 0.5 + 0.25 * rnd.r;
-  float n = snoise01(vec3(uv.x * detail, uv.y * detail, 0.1 * time));
-
-  //* グラデーションのX座標にノイズを指定し、色を抽出する
-  return texture2D(texture, vec2(n, 0.5));
-}
-
 vec4 demo1B() {
   vec2 uv = vUv;
 
   //* ザラつき表現用の色を取得
   vec4 rnd = texture2D(dustTex, uv);
+  //マスク用の色を取得
+  vec4 mask = texture2D(maskTex, uv);
 
   //* detailに乱数を加えることによってテクスチャにザラつきを与える
   float detail = 0.25 + 0.25 * rnd.r;
@@ -166,7 +142,7 @@ vec4 demo1B() {
   // あんまりよくない
   // color.rgb *= 1.0 - rnd.r;
 
-  return color;
+  return vec4(color.rgb, mask.a);
 }
 
 void main() {

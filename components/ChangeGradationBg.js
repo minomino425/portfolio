@@ -135,7 +135,7 @@ export default function ChangeGradationBg() {
      * アセット（素材）のロードを行う Promise
      */
     load() {
-      const imagePath = ["./dust.png", "./gradation.png"];
+      const imagePath = ["./dust.png", "./gradation.png", "./mask_05.png"];
 
       return new Promise((resolve) => {
         const loader = new THREE.TextureLoader();
@@ -153,7 +153,6 @@ export default function ChangeGradationBg() {
      * 初期化処理
      */
     init() {
-      console.log(this.texture[1].source.data.currentSrc);
       this.renderer = new THREE.WebGLRenderer();
       this.renderer.setClearColor(
         new THREE.Color(App3.RENDERER_PARAM.clearColor)
@@ -212,16 +211,18 @@ export default function ChangeGradationBg() {
       }
 
       // let viewSize = this.getViewSizeAtDepth();
-      this.geometry = new THREE.PlaneGeometry(2, 2);
+      this.geometry = new THREE.PlaneGeometry(1.5, 1.5);
 
       this.material = new THREE.RawShaderMaterial({
         uniforms: {
           texture: { value: this.texture[0] },
           dustTex: { value: this.texture[1] },
+          maskTex: { value: this.texture[2] },
           time: { value: 0.0 },
         },
         vertexShader: loadFile("./shader2.vert"),
         fragmentShader: loadFile("./shader2.frag"),
+        transparent: true,
       });
       this.mesh = new THREE.Mesh(this.geometry, this.material);
       this.scene.add(this.mesh);
