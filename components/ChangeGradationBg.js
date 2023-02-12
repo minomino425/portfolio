@@ -153,7 +153,7 @@ export default function ChangeGradationBg() {
      * 初期化処理
      */
     init() {
-      console.log(this.texture);
+      console.log(this.texture[1].source.data.currentSrc);
       this.renderer = new THREE.WebGLRenderer();
       this.renderer.setClearColor(
         new THREE.Color(App3.RENDERER_PARAM.clearColor)
