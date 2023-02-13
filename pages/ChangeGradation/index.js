@@ -3,7 +3,7 @@ import Morph from "../../components/morph";
 import BackToTop from "../../components/backToTop";
 import Cursor from "../../components/cursor";
 import Comment from "../../components/comment";
-import ChangeGradationBg from "../../components/changeGradationBg";
+import ChangeGradationBg from "../../components/ChangeGradationBg";
 import { motion } from 'framer-motion'
 
 const ChangeGradation = () => {
