@@ -1,8 +1,6 @@
 // 必要なモジュールを読み込み
 import React, { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { gsap } from "gsap";
-import GUI from "lil-gui";
 
 export default function ChangeGradationBg() {
   useEffect(() => {
@@ -18,17 +16,30 @@ export default function ChangeGradationBg() {
    */
   class App3 {
     /**
+     * カメラで撮影する範囲を表す定数
+     */
+    static get CAMERA_SCALE() {
+      return 1.0;
+    }
+    /**
      * カメラ定義のための定数
      */
     static get CAMERA_PARAM() {
+      // 平行投影（正射影）変換用のパラメータを計算する
+      const aspect = window.innerWidth / window.innerHeight; // アスペクト比
+      const scale = App3.CAMERA_SCALE; // 切り取る空間の広さ（スケール）
+      const horizontal = scale * aspect; // 横方向のスケール
+      const vertiacal = scale; // 縦方向のスケール
       return {
-        fovy: 35,
-        aspect: window.innerWidth / window.innerHeight,
+        left: -horizontal, // 切り取る空間の左端
+        right: horizontal, // 切り取る空間の右端
+        top: vertiacal, // 切り取る空間の上端
+        bottom: -vertiacal, // 切り取る空間の下端
         near: 0.1,
-        far: 20.0,
+        far: 50.0,
         x: 0.0,
-        y: -1.0,
-        z: 8.0,
+        y: 5.0,
+        z: 20.0,
         lookAt: new THREE.Vector3(0.0, 0.0, 0.0),
       };
     }
@@ -64,7 +75,7 @@ export default function ChangeGradationBg() {
       };
     }
     /**
-     * マテリアル定義のための定数 @@@
+     * マテリアル定義のための定数
      * 参考: https://threejs.org/docs/#api/en/materials/Material
      */
     static get MATERIAL_PARAM() {
@@ -124,7 +135,15 @@ export default function ChangeGradationBg() {
         "resize",
         () => {
           this.renderer.setSize(window.innerWidth, window.innerHeight);
-          this.camera.aspect = window.innerWidth / window.innerHeight;
+          // OrthographicCamera 用のパラメータを求める
+          const aspect = window.innerWidth / window.innerHeight;
+          const scale = App3.CAMERA_SCALE;
+          const horizontal = scale * aspect;
+          const vertiacal = scale;
+          this.camera.left = -horizontal;
+          this.camera.right = horizontal;
+          this.camera.top = vertiacal;
+          this.camera.bottom = -vertiacal;
           this.camera.updateProjectionMatrix();
         },
         false
@@ -136,7 +155,6 @@ export default function ChangeGradationBg() {
      */
     load() {
       const imagePath = ["./dust.png", "./gradation.png", "./mask_05.png"];
-
       return new Promise((resolve) => {
         const loader = new THREE.TextureLoader();
         imagePath.forEach((img) => {
@@ -168,8 +186,19 @@ export default function ChangeGradationBg() {
       this.scene = new THREE.Scene();
 
       // カメラ
-      this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10000);
-      this.camera.position.set(0, 0, 2);
+      this.camera = new THREE.OrthographicCamera(
+        App3.CAMERA_PARAM.left,
+        App3.CAMERA_PARAM.right,
+        App3.CAMERA_PARAM.top,
+        App3.CAMERA_PARAM.bottom,
+        App3.CAMERA_PARAM.near,
+        App3.CAMERA_PARAM.far
+      );
+      this.camera.position.set(
+        App3.CAMERA_PARAM.x,
+        App3.CAMERA_PARAM.y,
+        App3.CAMERA_PARAM.z
+      );
       this.camera.lookAt(App3.CAMERA_PARAM.lookAt);
 
       // ディレクショナルライト（平行光源）
