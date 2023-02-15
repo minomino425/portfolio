@@ -1,11 +1,12 @@
 import styles from "../styles/Left.module.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 export default function Comment({
   noiseBg = false,
   glass = false,
   morph = false,
   noiseSlide = false,
+  changeGradation = false,
 }) {
   const noiseBgComment = noiseBg
     ? "ノイズでざらつきのあるような質感を表現しました。時間経過またはマウスカーソルを動かすと色が変化します。ただのベタ塗りより繊細な見え方になる気がします。"
@@ -18,6 +19,9 @@ export default function Comment({
     : "";
   const noiseSlideComment = noiseSlide
     ? "ノイズを使って水玉模様に切り替わるスライダーです。"
+    : "";
+  const changeGradationComment = changeGradation
+    ? "グラデーションの色合いがゆらゆらと移り変わります。GLSLスクールのプラスワン講義での山田啓太さんの解説を元にして作りました。Figmaでグラデーションの画像を作り、そこから色を抽出しています。"
     : "";
 
   const [active, setActive] = useState(false);
@@ -65,6 +69,7 @@ export default function Comment({
           {glassComment && glassComment}
           {morphComment && morphComment}
           {noiseSlideComment && noiseSlideComment}
+          {changeGradationComment && changeGradationComment}
         </p>
       </a>
     </>

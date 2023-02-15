@@ -1,5 +1,3 @@
-// import css from "../styles/Home.module.css";
-import React, { useState, useEffect, useRef } from "react";
 import Noise from "../../components/noiseBg";
 import BackToTop from "../../components/backToTop";
 import Cursor from "../../components/cursor";

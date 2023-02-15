@@ -1,5 +1,3 @@
-// import css from "../styles/Home.module.css";
-import Morph from "../../components/morph";
 import BackToTop from "../../components/backToTop";
 import Cursor from "../../components/cursor";
 import Comment from "../../components/comment";
@@ -18,7 +16,7 @@ const ChangeGradation = () => {
       <ChangeGradationBg />
       <BackToTop isWork/>
       <Cursor />
-      <Comment/>
+      <Comment changeGradation/>
       </motion.div>
     </>
   );

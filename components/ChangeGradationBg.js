@@ -1,5 +1,5 @@
 // 必要なモジュールを読み込み
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import * as THREE from "three";
 
 export default function ChangeGradationBg() {
@@ -11,9 +11,6 @@ export default function ChangeGradationBg() {
     });
   }, []);
 
-  /**
-   * three.js を効率よく扱うために自家製の制御クラスを定義
-   */
   class App3 {
     /**
      * カメラで撮影する範囲を表す定数
@@ -54,60 +51,6 @@ export default function ChangeGradationBg() {
       };
     }
     /**
-     * ディレクショナルライト定義のための定数
-     */
-    static get DIRECTIONAL_LIGHT_PARAM() {
-      return {
-        color: 0xffffff, // 光の色
-        intensity: 1.0, // 光の強度
-        x: 1.0, // 光の向きを表すベクトルの X 要素
-        y: 1.0, // 光の向きを表すベクトルの Y 要素
-        z: 1.0, // 光の向きを表すベクトルの Z 要素
-      };
-    }
-    /**
-     * アンビエントライト定義のための定数
-     */
-    static get AMBIENT_LIGHT_PARAM() {
-      return {
-        color: 0xffffff, // 光の色
-        intensity: 0.5, // 光の強度
-      };
-    }
-    /**
-     * マテリアル定義のための定数
-     * 参考: https://threejs.org/docs/#api/en/materials/Material
-     */
-    static get MATERIAL_PARAM() {
-      return {
-        color: 0xa9ceec,
-        opacity: 0.7, // 透明度
-        side: THREE.DoubleSide, // 描画する面（カリングの設定）
-      };
-    }
-    static get MATERIAL_PARAM_RED() {
-      return {
-        color: 0xff3333,
-        opacity: 0.7, // 透明度
-        side: THREE.DoubleSide, // 描画する面（カリングの設定）
-      };
-    }
-    static get MATERIAL_PARAM_GREEN() {
-      return {
-        color: 0x33ff99,
-        opacity: 0.7, // 透明度
-        side: THREE.DoubleSide, // 描画する面（カリングの設定）
-      };
-    }
-    static get MATERIAL_PARAM_YELLOW() {
-      return {
-        color: 0xffff33,
-        opacity: 0.7, // 透明度
-        side: THREE.DoubleSide, // 描画する面（カリングの設定）
-      };
-    }
-
-    /**
      * コンストラクタ
      * @constructor
      */
@@ -115,8 +58,6 @@ export default function ChangeGradationBg() {
       this.renderer; // レンダラ
       this.scene; // シーン
       this.camera; // カメラ
-      this.directionalLight; // ディレクショナルライト
-      this.ambientLight; // アンビエントライト
       this.texture = []; // テクスチャ
       this.geometry;
       this.planeArray = [];
@@ -200,26 +141,7 @@ export default function ChangeGradationBg() {
         App3.CAMERA_PARAM.z
       );
       this.camera.lookAt(App3.CAMERA_PARAM.lookAt);
-
-      // ディレクショナルライト（平行光源）
-      this.directionalLight = new THREE.DirectionalLight(
-        App3.DIRECTIONAL_LIGHT_PARAM.color,
-        App3.DIRECTIONAL_LIGHT_PARAM.intensity
-      );
-      this.directionalLight.position.set(
-        App3.DIRECTIONAL_LIGHT_PARAM.x,
-        App3.DIRECTIONAL_LIGHT_PARAM.y,
-        App3.DIRECTIONAL_LIGHT_PARAM.z
-      );
-      this.scene.add(this.directionalLight);
-
-      // アンビエントライト（環境光）
-      this.ambientLight = new THREE.AmbientLight(
-        App3.AMBIENT_LIGHT_PARAM.color,
-        App3.AMBIENT_LIGHT_PARAM.intensity
-      );
-      this.scene.add(this.ambientLight);
-
+      
       function loadFile(url, data) {
         var request = new XMLHttpRequest();
         request.open("GET", url, false);
@@ -239,9 +161,7 @@ export default function ChangeGradationBg() {
         }
       }
 
-      // let viewSize = this.getViewSizeAtDepth();
       this.geometry = new THREE.PlaneGeometry(1.5, 1.5);
-
       this.material = new THREE.RawShaderMaterial({
         uniforms: {
           texture: { value: this.texture[0] },
