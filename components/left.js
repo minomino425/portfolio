@@ -13,13 +13,16 @@ export default function Left() {
               <span className={styles["list-menu"]}>Works</span>
             </li>
             <li className={styles.list}>
+              <a href="./ChangeGradation" className={styles["list-menu"]}>Change gradation</a>
+            </li>
+            <li className={styles.list}>
+              <a href="./morph" className={styles["list-menu"]}>3D Morph Targets</a>
+            </li>
+            <li className={styles.list}>
               <a href="./noiseBg" className={styles["list-menu"]}>Noise background</a>
             </li>
             <li className={styles.list}>
               <a href="./glass" className={styles["list-menu"]}>Grass transition</a>
-            </li>
-            <li className={styles.list}>
-              <a href="./morph" className={styles["list-menu"]}>3D Morph Targets</a>
             </li>
             <li className={styles.list}>
               <a href="./noiseSlide" className={styles["list-menu"]}>Noise transition</a>
