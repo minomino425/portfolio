@@ -96,19 +96,34 @@ export default function ChangeGradationBg() {
      */
     load() {
       const loader = new THREE.TextureLoader();
-      const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
-      return new Promise((resolve) => {
-        console.log(imagePath[0])
-        console.log(imagePath[1])
-        console.log(imagePath[2])
-        imagePath.forEach((img) => {
-          loader.load(img, (texture) => {
-            this.texture.push(texture);
-            //テクスチャが画像の枚数と一致していれば解決
-            this.texture.length === imagePath.length ? resolve() : "";
-          });
-        });
-      });
+      // const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+      // return new Promise((resolve) => {
+      //   imagePath.forEach((img, index) => {
+      //     loader.load(img, (texture) => {
+      //       console.log(this.texture[index])
+      //       this.texture.push(texture);
+      //       // this.texture[index] = texture;
+      //       //テクスチャが画像の枚数と一致していれば解決
+      //       this.texture.length === imagePath.length ? resolve() : "";
+      //     });
+      //   });
+      // });
+
+      (async () => {
+        const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+        const response = await Promise.all(
+          imagePath.map(async (img) => {
+            loader.load(img, (texture) => {
+              console.log(this.texture[index])
+              this.texture.push(texture);
+              // this.texture[index] = texture;
+              //テクスチャが画像の枚数と一致していれば解決
+              this.texture.length === imagePath.length ? resolve() : "";
+            })
+            .promise();
+          })
+        );
+      })();
     }
 
     /**
@@ -144,7 +159,7 @@ export default function ChangeGradationBg() {
         App3.CAMERA_PARAM.z
       );
       this.camera.lookAt(App3.CAMERA_PARAM.lookAt);
-      
+
       function loadFile(url, data) {
         var request = new XMLHttpRequest();
         request.open("GET", url, false);
