@@ -98,6 +98,9 @@ export default function ChangeGradationBg() {
       const loader = new THREE.TextureLoader();
       const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
       return new Promise((resolve) => {
+        console.log(imagePath[0])
+        console.log(imagePath[1])
+        console.log(imagePath[2])
         imagePath.forEach((img) => {
           loader.load(img, (texture) => {
             this.texture.push(texture);
@@ -162,9 +165,9 @@ export default function ChangeGradationBg() {
       }
 
       this.geometry = new THREE.PlaneGeometry(1.5, 1.5);
-      console.log("1" + this.texture[0].source.data.src)
-      console.log("2"+ this.texture[1].source.data.src)
-      console.log("3"+ this.texture[2].source.data.src)
+      // console.log("1" + this.texture[0].source.data.src)
+      // console.log("2"+ this.texture[1].source.data.src)
+      // console.log("3"+ this.texture[2].source.data.src)
       this.material = new THREE.RawShaderMaterial({
         uniforms: {
           texture: { value: this.texture[0] },
