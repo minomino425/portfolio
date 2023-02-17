@@ -1,5 +1,6 @@
 // 必要なモジュールを読み込み
 import React, { useEffect } from "react";
+import { resolve } from "styled-jsx/css";
 import * as THREE from "three";
 
 export default function ChangeGradationBg() {
@@ -96,34 +97,49 @@ export default function ChangeGradationBg() {
      */
     load() {
       const loader = new THREE.TextureLoader();
-      // const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
-      // return new Promise((resolve) => {
-      //   imagePath.forEach((img, index) => {
-      //     loader.load(img, (texture) => {
-      //       console.log(this.texture[index])
-      //       this.texture.push(texture);
-      //       // this.texture[index] = texture;
-      //       //テクスチャが画像の枚数と一致していれば解決
-      //       this.texture.length === imagePath.length ? resolve() : "";
-      //     });
-      //   });
-      // });
+      const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+      return new Promise((resolve) => {
+        imagePath.forEach((img, index) => {
+          loader.load(img, (texture) => {
+            // this.texture.push(texture);
+            this.texture[index] = texture;
+            //テクスチャが画像の枚数と一致していれば解決
+            this.texture.length === imagePath.length ? resolve() : "";
+          });
+        });
+      });
 
-      (async () => {
-        const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
-        const response = await Promise.all(
-          imagePath.map(async (img) => {
-            loader.load(img, (texture) => {
-              console.log(this.texture[index])
-              this.texture.push(texture);
-              // this.texture[index] = texture;
-              //テクスチャが画像の枚数と一致していれば解決
-              this.texture.length === imagePath.length ? resolve() : "";
-            })
-            .promise();
-          })
-        );
-      })();
+      //   (async () => {
+      //     const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+      //     const response = await Promise.all(
+      //       imagePath.map(async (img) => {
+      //         loader.load(img, (texture) => {
+      //           console.log(this.texture[index])
+      //           this.texture.push(texture);
+      //           // this.texture[index] = texture;
+      //           //テクスチャが画像の枚数と一致していれば解決
+      //           this.texture.length === imagePath.length ? resolve() : "";
+      //         })
+      //         .promise();
+      //       })
+      //     );
+      //   })();
+      // }
+
+      // async load() {
+      //   const loader = new THREE.TextureLoader();
+      //   const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+      //   const response = await Promise.all(
+      //     imagePath.map(async (img) => {
+      //       loader.load(img, (texture) => {
+      //         this.texture.push(texture);
+      //         console.log(this.texture)
+      //         // this.texture[index] = texture;
+      //         //テクスチャが画像の枚数と一致していれば解決
+      //       });
+      //       resolve();
+      //     })
+      //   );
     }
 
     /**
