@@ -267,10 +267,10 @@ export default function ChangeGradationBg() {
       <div id="webgl"></div>
       <div className={styles.eyeWrap}>
         <div className={styles.eye}>
-          <span className={styles.black}></span>
+          <span className={styles.blackLeft}></span>
         </div>
         <div className={styles.eye}>
-          <span className={styles.black}></span>
+          <span className={styles.blackRight}></span>
         </div>
       </div>
     </>
