@@ -1,13 +1,15 @@
 // 必要なモジュールを読み込み
 import React, { useEffect } from "react";
-import { resolve } from "styled-jsx/css";
+import { gsap } from "gsap";
 import * as THREE from "three";
+import styles from "../styles/Left.module.css";
 
 export default function ChangeGradationBg() {
   useEffect(() => {
     const app = new App3();
     app.load().then(() => {
       app.init();
+      app.animate();
       app.render();
     });
   }, []);
@@ -68,6 +70,13 @@ export default function ChangeGradationBg() {
       this.update = function (time) {
         this.material.uniforms.time.value = time;
       };
+      this.animationParam = {
+        mask_01: "",
+        mask_02: "",
+        mask_03: "",
+        mask_04: "",
+        mask_05: "",
+      };
 
       // 再帰呼び出しのための this 固定
       this.render = this.render.bind(this);
@@ -97,7 +106,13 @@ export default function ChangeGradationBg() {
      */
     load() {
       const loader = new THREE.TextureLoader();
-      const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
+      const imagePath = [
+        "./gradation.png",
+        "./dust.png",
+        "./mask_05.png",
+        "./mask_01.png",
+        "./mask_03.png",
+      ];
       return new Promise((resolve) => {
         imagePath.forEach((img, index) => {
           loader.load(img, (texture) => {
@@ -196,9 +211,6 @@ export default function ChangeGradationBg() {
       }
 
       this.geometry = new THREE.PlaneGeometry(1.5, 1.5);
-      // console.log("1" + this.texture[0].source.data.src)
-      // console.log("2"+ this.texture[1].source.data.src)
-      // console.log("3"+ this.texture[2].source.data.src)
       this.material = new THREE.RawShaderMaterial({
         uniforms: {
           texture: { value: this.texture[0] },
@@ -212,6 +224,28 @@ export default function ChangeGradationBg() {
       });
       this.mesh = new THREE.Mesh(this.geometry, this.material);
       this.scene.add(this.mesh);
+    }
+
+    animate() {
+      const tl = gsap.timeline({
+        defaults: { duration: 2, ease: "Power3.easeInOut" },
+        repeat: -1,
+      });
+      tl.to(this.material, {
+        onUpdate: () => {
+          this.material.uniforms.maskTex = { value: this.texture[2] };
+        },
+      })
+        .to(this.material, {
+          onUpdate: () => {
+            this.material.uniforms.maskTex = { value: this.texture[3] };
+          },
+        })
+        .to(this.material, {
+          onUpdate: () => {
+            this.material.uniforms.maskTex = { value: this.texture[4] };
+          },
+        });
     }
 
     /**
@@ -231,6 +265,14 @@ export default function ChangeGradationBg() {
   return (
     <>
       <div id="webgl"></div>
+      <div className={styles.eyeWrap}>
+        <div className={styles.eye}>
+          <span className={styles.black}></span>
+        </div>
+        <div className={styles.eye}>
+          <span className={styles.black}></span>
+        </div>
+      </div>
     </>
   );
 }

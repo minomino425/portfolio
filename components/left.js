@@ -4,7 +4,7 @@ export default function Left() {
     <>
       <section className={styles["left-container"]}>
         <div>
-          <h2 className={styles.title}>Tomomi Minoda</h2>
+          <h2 className={styles.title}>tomomi minoda</h2>
           <ul className={styles.menu}>
             <li className={styles.list}>
               <a href="./about" className={styles["list-menu"]}>About</a>

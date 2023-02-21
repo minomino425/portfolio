@@ -5,10 +5,12 @@ export default function About() {
     <>
       <section className={styles["about-containar"]}>
         <div className={styles.about}>
-          <h2 className={styles.title}>Tomomi Minoda</h2>
+          <h2 className={styles.title}>tomomi minoda</h2>
           <div className={styles["about-inner"]}>
             <p>
-              1995年、兵庫県生まれ。神奈川県在住。大学卒業後、SEからウェブ業界へ転身。
+              1995年、兵庫県生まれ。神奈川県在住。
+              <br />
+              大学卒業後、SEからウェブ業界へ転身。
               <br />
               現在は東京のWebマーケティング会社でコーダーとしてWebサイトを作っています。
               <br />
@@ -24,7 +26,7 @@ export default function About() {
             </a>
           </div>
         </div>
-        <BackToTop/>
+        <BackToTop />
       </section>
     </>
   );
