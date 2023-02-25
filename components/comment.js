@@ -21,7 +21,7 @@ export default function Comment({
     ? "ノイズを使って水玉模様に切り替わるスライダーです。"
     : "";
   const changeGradationComment = changeGradation
-    ? "グラデーションの色合いがゆらゆらと移り変わります。GLSLスクールのプラスワン講義での山田啓太さんの解説を元にして作りました。Figmaでグラデーションの画像を作り、そこから色を抽出しています。"
+    ? "体の色が移り変わるモンスターです。GLSLスクールのプラスワン講義での山田啓太さんの解説を元にして作りました。グラデーションの画像から色を抽出しています。"
     : "";
 
   const [active, setActive] = useState(false);

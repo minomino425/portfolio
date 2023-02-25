@@ -1,10 +1,13 @@
 // 必要なモジュールを読み込み
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import * as THREE from "three";
 import styles from "../styles/Left.module.css";
 
 export default function ChangeGradationBg() {
+  const eyeRef = useRef(null);
+  const eyeRef2 = useRef(null);
+
   useEffect(() => {
     const app = new App3();
     app.load().then(() => {
@@ -123,38 +126,6 @@ export default function ChangeGradationBg() {
           });
         });
       });
-
-      //   (async () => {
-      //     const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
-      //     const response = await Promise.all(
-      //       imagePath.map(async (img) => {
-      //         loader.load(img, (texture) => {
-      //           console.log(this.texture[index])
-      //           this.texture.push(texture);
-      //           // this.texture[index] = texture;
-      //           //テクスチャが画像の枚数と一致していれば解決
-      //           this.texture.length === imagePath.length ? resolve() : "";
-      //         })
-      //         .promise();
-      //       })
-      //     );
-      //   })();
-      // }
-
-      // async load() {
-      //   const loader = new THREE.TextureLoader();
-      //   const imagePath = ["./gradation.png", "./dust.png", "./mask_05.png"];
-      //   const response = await Promise.all(
-      //     imagePath.map(async (img) => {
-      //       loader.load(img, (texture) => {
-      //         this.texture.push(texture);
-      //         console.log(this.texture)
-      //         // this.texture[index] = texture;
-      //         //テクスチャが画像の枚数と一致していれば解決
-      //       });
-      //       resolve();
-      //     })
-      //   );
     }
 
     /**
@@ -234,18 +205,50 @@ export default function ChangeGradationBg() {
       tl.to(this.material, {
         onUpdate: () => {
           this.material.uniforms.maskTex = { value: this.texture[2] };
+          this.renderer.setClearColor(
+            new THREE.Color(0xFCA0BA)
+          );
         },
       })
         .to(this.material, {
           onUpdate: () => {
             this.material.uniforms.maskTex = { value: this.texture[3] };
+            this.renderer.setClearColor(
+              new THREE.Color(0xD2F0A2)
+            );
           },
         })
         .to(this.material, {
           onUpdate: () => {
             this.material.uniforms.maskTex = { value: this.texture[4] };
+            this.renderer.setClearColor(
+              new THREE.Color(0xDFC7FC)
+            );
           },
         });
+
+      window.addEventListener("mousemove", eyeball);
+      function eyeball() {
+        let x =
+          eyeRef.current.getBoundingClientRect().left +
+          eyeRef.current.clientWidth / 2;
+        let y =
+          eyeRef.current.getBoundingClientRect().top +
+          eyeRef.current.clientHeight / 2;
+        let radian = Math.atan2(event.pageX - x, event.pageY - y);
+        let rot = radian * (180 / Math.PI) * -1 + 270;
+        eyeRef.current.style.transform = "rotate(" + rot + "deg)";
+
+        let x2 =
+          eyeRef2.current.getBoundingClientRect().left +
+          eyeRef2.current.clientWidth / 2;
+        let y2 =
+          eyeRef2.current.getBoundingClientRect().top +
+          eyeRef2.current.clientHeight / 2;
+        let radian2 = Math.atan2(event.pageX - x2, event.pageY - y2);
+        let rot2 = radian2 * (180 / Math.PI) * -1 + 270;
+        eyeRef2.current.style.transform = "rotate(" + rot2 + "deg)";
+      }
     }
 
     /**
@@ -266,12 +269,8 @@ export default function ChangeGradationBg() {
     <>
       <div id="webgl"></div>
       <div className={styles.eyeWrap}>
-        <div className={styles.eye}>
-          <span className={styles.blackLeft}></span>
-        </div>
-        <div className={styles.eye}>
-          <span className={styles.blackRight}></span>
-        </div>
+        <div className={styles.eye} ref={eyeRef}></div>
+        <div className={styles.eye} ref={eyeRef2}></div>
       </div>
     </>
   );

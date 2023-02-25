@@ -335,13 +335,21 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
+@media (max-width: 768px) {
+  .eyeWrap {
+    width: 60%;
+  }
+}
+
 .eye {
-  width: 70px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background-color: #fff;
   border-radius: 50%;
+  position: relative;
 }
-.blackLeft {
+.eye::after {
+  content:"";
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -351,7 +359,7 @@
   top: 5px;
   left: 10px;
 }
-.blackRight {
+/* .blackRight {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -360,4 +368,4 @@
   position: absolute;
   top: 5px;
   right: 29px;
-}
+} */
