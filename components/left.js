@@ -13,10 +13,10 @@ export default function Left() {
               <span className={styles["list-menu"]}>Works</span>
             </li>
             <li className={styles.list}>
-              <a href="./ChangeGradation" className={styles["list-menu"]}>Change gradation</a>
+              <a href="./gradationMonster" className={styles["list-menu"]}>Gradatio monstern</a>
             </li>
             <li className={styles.list}>
-              <a href="./morph" className={styles["list-menu"]}>3D Morph Targets</a>
+              <a href="./morph" className={styles["list-menu"]}>3D morph targets</a>
             </li>
             <li className={styles.list}>
               <a href="./noiseBg" className={styles["list-menu"]}>Noise background</a>

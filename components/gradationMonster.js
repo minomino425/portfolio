@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import * as THREE from "three";
 import styles from "../styles/Left.module.css";
 
-export default function ChangeGradationBg() {
+export default function GradationMonster() {
   const eyeRef = useRef(null);
   const eyeRef2 = useRef(null);
 
@@ -72,13 +72,6 @@ export default function ChangeGradationBg() {
       this.mesh;
       this.update = function (time) {
         this.material.uniforms.time.value = time;
-      };
-      this.animationParam = {
-        mask_01: "",
-        mask_02: "",
-        mask_03: "",
-        mask_04: "",
-        mask_05: "",
       };
 
       // 再帰呼び出しのための this 固定
