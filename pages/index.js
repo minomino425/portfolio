@@ -15,7 +15,7 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ ease: "easeOut", duration: 1 }}
     >
-      {/* <Opening /> */}
+      <Opening />
       <Bg />
       <Left></Left>
       <Cursor />

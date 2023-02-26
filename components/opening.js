@@ -1,6 +1,8 @@
 import styles from "../styles/opening.module.css";
 import { gsap } from "gsap";
 import React, { useState, useEffect, useRef } from "react";
+import NextImage from "next/image";
+import url from "../public/opening.png";
 
 export default function Opening() {
   const tl = gsap.timeline({});
@@ -23,9 +25,7 @@ export default function Opening() {
     <>
       <section className={styles["opening"]}>
         <div className={styles["opening-inner"]}>
-          <p className={styles["opening-text"]}>
-            <span className={styles["opening-title"]}>t</span>omomi <span className={styles["opening-title"]}>m</span>inoda
-          </p>
+          <NextImage className="object-contain" src={url} alt="" />
         </div>
       </section>
     </>

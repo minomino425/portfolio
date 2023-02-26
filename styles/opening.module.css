@@ -1,5 +1,4 @@
 .opening {
-  background-color: rgba(179, 179, 179, 0.4);
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -8,14 +7,12 @@
 .opening-inner {
   display: grid;
   place-items: center;
-  width: 100%;
+  margin: 0 auto;
+  width: 70%;
   height: 100%;
 }
-.opening-text {
-  font-family: "Fredoka One", cursive;
-  font-size: 1.8vw;
-  text-align: center;
-}
-.opening-title{
-  color: #cde4e8;
+
+.opening-inner img{
+  width: 100%;
+  height: auto;
 }

@@ -13,7 +13,7 @@ export default function Left() {
               <span className={styles["list-menu"]}>Works</span>
             </li>
             <li className={styles.list}>
-              <a href="./gradationMonster" className={styles["list-menu"]}>Gradatio monstern</a>
+              <a href="./gradationMonster" className={styles["list-menu"]}>Gradation monster</a>
             </li>
             <li className={styles.list}>
               <a href="./morph" className={styles["list-menu"]}>3D morph targets</a>
