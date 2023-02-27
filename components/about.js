@@ -5,7 +5,7 @@ export default function About() {
     <>
       <section className={styles["about-containar"]}>
         <div className={styles.about}>
-          <h2 className={styles.title}>tomomi minoda</h2>
+          <h2 className={styles.title}>minoda tomomi</h2>
           <div className={styles["about-inner"]}>
             <p>
               1995年、兵庫県生まれ。神奈川県在住。
@@ -16,7 +16,9 @@ export default function About() {
               <br />
               CSSやSVGアニメーションを作るのが好きです。表現の幅を広げるためWebGLスクール、GLSLスクールを受講し、個人でWebGLも学習中です。
               <br />
-              将来的にはUI/UXの設計、デザイン、コーディングまで一貫して作れるようになりたいと思っています。
+              Next.js,Reactなどのフレームワークのスキルも高めていきたいと思っており、このサイトはその2つを使って作りました。
+              <br />
+              あくまでも理想ですが、将来的にはUI/UXの設計、デザイン、コーディングまで一貫して作れるようになりたいです。
             </p>
             <a
               className={styles["link-zenn"]}

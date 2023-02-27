@@ -32,9 +32,11 @@ export default function Cursor() {
       ySet(pos.y);
     });
 
+
     const links = document.querySelectorAll("a");
     for (let i = 0; i < links.length; i++) {
       let selfLink = links[i];
+      console.log(selfLink)
       selfLink.addEventListener("mouseover", function () {
         ball.classList.add(`${styles["link"]}`);
       });

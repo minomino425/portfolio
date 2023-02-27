@@ -5,7 +5,8 @@
   top: 0;
   border: 2px solid #322940;
   overflow-y: auto;
-  opacity: 0;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  transition: clip-path 1s cubic-bezier(0.57, 0, 0, 0.99), -webkit-clip-path 1s cubic-bezier(0.57, 0, 0, 0.99);
 }
 
 @media (max-width: 768px) {
