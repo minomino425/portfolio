@@ -10,7 +10,6 @@ import url3 from "../public/opening.png";
 
 export default function OpeningFirst() {
   const tl = gsap.timeline({});
-  console.log("aaa")
   useEffect(() => {
     tl.to(
       `.${styles["image1"]}`,

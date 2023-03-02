@@ -33,7 +33,8 @@ const Home = () => {
         exit={{ opacity: 0 }}
         transition={{ ease: "easeOut", duration: 1 }}
       >
-        {showAnimation ? <OpeningFirst /> : <OpeningClear />}
+        {/* {showAnimation ? <OpeningFirst /> : <OpeningClear />} */}
+        <OpeningClear />
         <Bg />
         <Left></Left>
         <Cursor />
