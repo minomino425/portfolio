@@ -7,6 +7,7 @@ export default function Comment({
   morph = false,
   noiseSlide = false,
   changeGradation = false,
+  about = false,
 }) {
   const noiseBgComment = noiseBg
     ? "ノイズでざらつきのあるような質感を表現しました。時間経過またはマウスカーソルを動かすと色が変化します。ただのベタ塗りより繊細な見え方になる気がします。"
@@ -22,6 +23,9 @@ export default function Comment({
     : "";
   const changeGradationComment = changeGradation
     ? "体の色が移り変わるモンスターです。GLSLスクールのプラスワン講義での山田啓太さんの解説を元にして作りました。グラデーションの画像から色を抽出しています。"
+    : "";
+  const aboutComment = about
+    ? `このサイトの今後の改善点リストです。\n・パフォーマンスが悪くカーソルがもたつく\n・オープニングアニメーションをcookieを使って最初の1回だけ表示させる\n・生のWebGLで縦横比を保たせる`
     : "";
 
   const [active, setActive] = useState(false);
@@ -54,7 +58,11 @@ export default function Comment({
         ref={refTitle}
         {...{ style }}
       >
-        <span className={styles["comment-title"]}>Comment</span>
+        {aboutComment ? (
+          <span className={styles["comment-title"]}>課題リスト</span>
+        ) : (
+          <span className={styles["comment-title"]}>Comment</span>
+        )}
       </a>
       <a
         className={`${styles["comment-wrap"]} ${
@@ -70,6 +78,7 @@ export default function Comment({
           {morphComment && morphComment}
           {noiseSlideComment && noiseSlideComment}
           {changeGradationComment && changeGradationComment}
+          {aboutComment && aboutComment}
         </p>
       </a>
     </>

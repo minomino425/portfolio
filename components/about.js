@@ -5,7 +5,7 @@ export default function About() {
     <>
       <section className={styles["about-containar"]}>
         <div className={styles.about}>
-          <h2 className={styles.title}>minoda tomomi</h2>
+          <h2 className={styles.title}>tomomi minoda</h2>
           <div className={styles["about-inner"]}>
             <p>
               1995年、兵庫県生まれ。神奈川県在住。
@@ -18,7 +18,7 @@ export default function About() {
               <br />
               Next.js,Reactなどのフレームワークのスキルも高めていきたいと思っており、このサイトはその2つを使って作りました。
               <br />
-              あくまでも理想ですが、将来的にはUI/UXの設計、デザイン、コーディングまで一貫して作れるようになりたいです。
+              デザインの分野にも興味があり、将来的にはデザインもできるフロントエンドエンジニアになりたいと考えています。
             </p>
             <a
               className={styles["link-zenn"]}

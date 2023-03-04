@@ -1,6 +1,7 @@
 import About from "../../components/about";
 import Bg from "../../components/bg";
 import Cursor from "../../components/cursor";
+import Comment from "../../components/comment";
 import { motion } from 'framer-motion'
 
 const about = () => {
@@ -15,6 +16,7 @@ const about = () => {
         <Bg />
         <About />
         <Cursor />
+        <Comment about />
       </motion.div>
     </>
   );

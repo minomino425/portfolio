@@ -6,7 +6,8 @@
   border: 2px solid #322940;
   overflow-y: auto;
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-  transition: clip-path 1s cubic-bezier(0.57, 0, 0, 0.99), -webkit-clip-path 1s cubic-bezier(0.57, 0, 0, 0.99);
+  transition: clip-path 1s cubic-bezier(0.57, 0, 0, 0.99),
+    -webkit-clip-path 1s cubic-bezier(0.57, 0, 0, 0.99);
 }
 
 @media (max-width: 768px) {
@@ -242,20 +243,19 @@
 }
 
 .comment {
-  font-family: "Karla", sans-serif;
+  font-family: "Noto Sans JP", "Karla", sans-serif;
   font-size: 14px;
   position: absolute;
   width: 130px;
   height: 27px;
   right: 5%;
   bottom: 6%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  display: grid;
+  place-content: center;
   color: #322940;
   background-color: #fff;
   border-radius: 15px;
-  padding: 0 2rem;
+  padding: 0 1rem;
   border: 0.1rem solid #322940;
   line-height: 1.5rem;
   z-index: 10;
@@ -276,7 +276,7 @@
 .comment-wrap {
   display: inline-block;
   width: 30%;
-  font-family: "Karla", sans-serif;
+  font-family: "Noto Sans JP", "Karla", sans-serif;
   font-size: 14px;
   color: #322940;
   background-color: #fff;
@@ -286,7 +286,7 @@
   color: #322940;
   background-color: #fff;
   border-radius: 15px;
-  padding: 0 2rem;
+  padding: 0 1rem;
   border: 0.1rem solid #322940;
   line-height: 1.5rem;
   transform-origin: bottom right;
@@ -373,15 +373,7 @@
   top: 5px;
   left: 10px;
 }
-/* .blackRight {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-color: #000;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  right: 29px;
-} */
 
-
+.commentText {
+  white-space: pre-wrap;
+}
