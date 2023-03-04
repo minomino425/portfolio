@@ -10,7 +10,6 @@ import url3 from "../public/opening.png";
 
 export default function OpeningClear() {
   const tl = gsap.timeline({});
-  console.log("bbb")
   useEffect(() => {
     tl.to(
       `.${leftStyles["left-container"]}`,

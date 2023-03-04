@@ -15,7 +15,6 @@ const Home = () => {
   useEffect(() => {
     // Cookieから「showAnimation」の値を取得する
     const showAnimationCookie = Cookie.get("showAnimation");
-    console.log(showAnimationCookie)
     // Cookieに「showAnimation」の値がなければ、アニメーションを表示する
     if (showAnimationCookie === undefined) {
       setShowAnimation(true);
