@@ -8,7 +8,7 @@ export default function About() {
           <h2 className={styles.title}>tomomi minoda</h2>
           <div className={styles["about-inner"]}>
             <p>
-              1995年、兵庫県生まれ。神奈川県在住。
+              1995年、兵庫県生まれ。東京都在住。
               <br />
               大学卒業後、SEからウェブ業界へ転身。
               <br />
